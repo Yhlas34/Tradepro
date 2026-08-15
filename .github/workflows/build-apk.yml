@@ -28,13 +28,24 @@ jobs:
       - name: Setup Android SDK
         uses: android-actions/setup-android@v3
 
-      - name: Install Android SDK 36
-        run: sdkmanager "platforms;android-36" "build-tools;36.0.0"
+      - name: Install Android SDK
+        run: |
+          sdkmanager "platform-tools"
+          sdkmanager "platforms;android-36"
+          sdkmanager "platforms;android-36-ext1"
+          sdkmanager "build-tools;36.0.0"
 
       - name: Build Debug APK
-        run: gradle assembleDebug --stacktrace
+        run: gradle :app:assembleDebug --stacktrace --no-daemon
 
       - name: Find APK
+        run: find . -type f -name "*.apk"
+
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: TradeAI-debug
+          path: "**/build/outputs/apk/debug/*.apk"      - name: Find APK
         run: find . -name "*.apk" -type f
 
       - name: Upload APK
