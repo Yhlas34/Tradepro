@@ -1,0 +1,6 @@
+{
+  "name": "TradeAI Pro",
+  "description": "Professional AI chart vision analyzer, Long/Short trading signals with SL/TP & P&L calculator, and XM / MT5 auto-trade connection manager.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
